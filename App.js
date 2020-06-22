@@ -4,7 +4,7 @@ import {useScreens} from "react-native-screens"
 import {AppLoading} from "expo";
 import * as Font from "expo-font";
 
-import scheduleMainNavigator from "./src/navigation/scheduleNavigators";
+import BottomTabNavigator from "./src/navigation/scheduleNavigators";
 import {ScheduleScreen} from "./src/screens/ScheduleScreen";
 
 useScreens();
@@ -29,10 +29,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.bold}>kokokoko</Text>
-      <ScheduleScreen/>
-    </View>
+      <BottomTabNavigator/>
   );
 }
 
