@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
 
 import {ScheduleScreen} from "../screens/ScheduleScreen";
 import {UserScreen} from "../screens/UserScreen";
@@ -44,14 +44,22 @@ const tabScreenConfig = {
   Schedules:{
     screen:MainNavigator, 
     navigationOptions:{
-      tabBarColor: "",
+      tabBarIcon: (tabInfo) => {
+        return (
+          <Ionicons name="md-calendar" size={24} color={tabInfo.tintColor} />
+        );
+      },
       tabBarLabel: "時間割"
     }
   },
   Users:{
     screen:UserNavigator,
     navigationOptions:{
-      tabBarColor: "",
+      tabBarIcon: (tabInfo) => {
+        return (
+          <Ionicons name="md-person" size={24} color={tabInfo.tintColor} />
+        );
+      },
       tabBarLabel: "プロフィール"
     }
   }
@@ -62,7 +70,8 @@ const BottomTabNavigator = createBottomTabNavigator(tabScreenConfig, {
     labelStyle:{
       fontFamily:"open-sans"
     },
-    activeTintColor: ""
+    activeTintColor: Colors.blue,
+    inactiveTintColor: Colors.gray
   }
 });
 
