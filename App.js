@@ -3,11 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import {useScreens} from "react-native-screens"
 import {AppLoading} from "expo";
 import * as Font from "expo-font";
+import {Provider} from "react-redux";
+import {createStore, combineReducers} from "redux";
 
 import BottomTabNavigator from "./src/navigation/scheduleNavigators";
-import {ScheduleScreen} from "./src/screens/ScheduleScreen";
+import {weekReducer} from "./src/store/reducers/week";
 
 useScreens();
+
+const rootReducer = combineReducers({
+  week: weekReducer
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,7 +37,9 @@ export default function App() {
   }
 
   return (
+    <Provider store={store}>
       <BottomTabNavigator/>
+    </Provider>
   );
 }
 
